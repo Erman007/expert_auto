@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Эксперт Авто Тараз: выкуп, trade-in, продажа авто</title>
+<meta name="description" content="Эксперт Авто в Таразе: выкуп автомобилей, trade-in, продажа и выгодное кредитование. ул. Аль-Фараби 1А, с 09:00 до 19:00.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;700&family=Unbounded:wght@600;800&display=swap">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --asphalt:#1f2a36;--yellow:#ffc933;--sky:#0b57a4;
+  --page:#eef2f5;--panel:#ffffff;--ink:#17212b;--muted:#566371;--line:#c3ccd5;
+  --bub:#d9fdd3;--bubtext:#111b21;
+  --disp:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --page:#141b22;--panel:#1c252e;--ink:#eaeff3;--muted:#9aa8b5;--line:#33414e;
+    --bub:#005c4b;--bubtext:#ffffff;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --page:#141b22;--panel:#1c252e;--ink:#eaeff3;--muted:#9aa8b5;--line:#33414e;
+  --bub:#005c4b;--bubtext:#ffffff;color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--asphalt);scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:3px solid #2f80ed;outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+.hero{background:var(--asphalt);color:#fff;padding:32px 0 56px;border-bottom:4px dashed var(--yellow)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 40px}
+.brand{margin:0;font-weight:700;font-size:16px;opacity:.9}
+.lang{display:flex;border:2px solid rgba(255,255,255,.5);border-radius:999px;overflow:hidden}
+.lang button{font:inherit;font-size:14px;font-weight:700;background:transparent;color:#fff;border:0;padding:8px 14px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--yellow);color:#17212b}
+h1{font-family:var(--disp);font-weight:800;font-size:clamp(28px,5.2vw,50px);line-height:1.12;margin:0 0 20px;letter-spacing:-.01em}
+.lead{font-size:clamp(16px,2.3vw,19px);max-width:30em;margin:0 0 30px;color:#d3dbe3}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:14px 22px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent}
+.btn.y{background:var(--yellow);color:#17212b}
+.btn.o{border-color:#fff;color:#fff}
+
+.plate{display:flex;width:100%;max-width:400px;margin:0 auto;background:#fff;color:#111;border:4px solid #111;border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.45);transform:rotate(-3deg);overflow:hidden}
+.plate .kz{width:64px;background:var(--sky);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:var(--disp);font-weight:800;font-size:15px}
+.plate .kz i{width:20px;height:20px;border-radius:50%;background:var(--yellow);display:block}
+.plate .num{flex:1;display:flex;align-items:center;justify-content:center;padding:26px 8px;font-family:var(--disp);font-weight:800;font-size:clamp(24px,6vw,36px);letter-spacing:.04em}
+.plate .reg{width:72px;border-left:4px solid #111;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:clamp(22px,5vw,30px)}
+@media (prefers-reduced-motion:no-preference){
+  .plate{animation:drop .9s cubic-bezier(.2,.9,.3,1.2) both}
+  @keyframes drop{from{transform:translateY(-70px) rotate(-12deg);opacity:0}to{transform:rotate(-3deg);opacity:1}}
+}
+
+section{padding:56px 0 0}
+h2{font-family:var(--disp);font-weight:800;font-size:clamp(22px,4vw,32px);line-height:1.2;margin:0 0 8px}
+.hint{margin:0 0 28px;color:var(--muted)}
+
+.lanes{border:0;margin:0;padding:0}
+.lane{position:relative;isolation:isolate;display:grid;grid-template-columns:48px 1fr;column-gap:6px;align-items:center;padding:20px 14px;border-top:3px dashed var(--yellow);cursor:pointer}
+.lane:last-of-type{border-bottom:3px dashed var(--yellow)}
+.lane input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer;z-index:2}
+.lane .bg{position:absolute;inset:0;background:var(--panel);opacity:0;z-index:-1;transition:opacity .2s}
+.lane input:checked ~ .bg{opacity:1}
+.lane input:focus-visible ~ .bg{outline:3px solid #2f80ed;outline-offset:-3px}
+.lane .car{grid-row:1 / 3;font-size:28px;opacity:0;transform:translateX(-26px);transition:opacity .25s,transform .35s cubic-bezier(.2,.9,.3,1.2)}
+.lane input:checked ~ .car{opacity:1;transform:none}
+.lane .t{font-family:var(--disp);font-weight:600;font-size:clamp(17px,3.2vw,25px);line-height:1.25}
+.lane .d{grid-column:2;color:var(--muted);font-size:15px}
+
+.compose{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.field label{display:block;font-weight:700;margin-bottom:8px}
+.field input{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--panel);border:2px solid var(--line);border-radius:12px;padding:14px}
+.field input::placeholder{color:var(--muted)}
+.out{display:grid;gap:14px;justify-items:start}
+.bubble{background:var(--bub);color:var(--bubtext);border-radius:16px 16px 16px 4px;padding:14px 16px;max-width:100%;overflow-wrap:anywhere}
+@media (prefers-reduced-motion:no-preference){
+  .bubble.pop{animation:pop .3s ease-out}
+  @keyframes pop{from{transform:scale(.96);opacity:.5}to{transform:none;opacity:1}}
+}
+.send{display:inline-block;background:var(--yellow);color:#17212b;font-weight:700;font-size:17px;text-decoration:none;padding:16px 26px;border-radius:999px}
+
+.sign{background:var(--sky);color:#fff;border:6px solid #fff;box-shadow:0 0 0 5px var(--sky);border-radius:22px;padding:30px clamp(20px,4vw,40px);margin:5px}
+.sign .town{margin:0 0 4px;font-weight:700;opacity:.85}
+.sign .addr{font-family:var(--disp);font-weight:800;font-size:clamp(26px,6vw,46px);line-height:1.1;margin:0 0 20px}
+.sign .row{margin:0 0 6px;font-size:19px}
+.sign .row a{font-weight:700;text-decoration:none}
+.sign .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.sign .links a{background:#fff;color:var(--sky);font-weight:700;text-decoration:none;padding:12px 18px;border-radius:999px;font-size:16px}
+.sign :focus-visible{outline-color:#fff}
+
+footer{margin-top:64px;background:var(--asphalt);color:#aab6c2;padding:26px 0 30px;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+footer a{color:#fff}
+
+@media (max-width:760px){
+  .hero-grid,.compose{grid-template-columns:1fr}
+  .top{margin-bottom:28px}
+  .plate{max-width:340px}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="top"><p class="brand">Эксперт Авто, Тараз</p><div class="lang" role="group" aria-label="Тіл / Язык"><button type="button" data-lang="kk">Қазақша</button><button type="button" data-lang="ru">Русский</button></div></div>
+    <div class="hero-grid">
+      <div>
+        <h1>Продайте, обменяйте или купите машину в Таразе</h1>
+        <p class="lead">Выкуп, trade-in, продажа и выгодное кредитование на Аль-Фараби. Выберите, что нужно, и напишите нам в WhatsApp.</p>
+        <div class="btns">
+          <a class="btn y" href="#need">Выбрать, что нужно</a>
+          <a class="btn o" href="tel:+77773090017">Позвонить</a>
+        </div>
+      </div>
+      <div class="plate" aria-hidden="true">
+        <div class="kz"><i></i>KZ</div>
+        <div class="num">EXPERT</div>
+        <div class="reg">08</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="need" class="wrap">
+    <h2>Что вам нужно?</h2>
+    <p class="hint">Выберите услугу, и мы подготовим сообщение для WhatsApp.</p>
+    <fieldset class="lanes">
+      <legend class="hint" style="position:absolute;left:-9999px">Выберите услугу</legend>
+      <label class="lane"><input type="radio" name="need" value="sell" checked><span class="bg"></span><span class="car" aria-hidden="true">🚗</span><span class="t">Продать мою машину</span><span class="d">Оценим автомобиль и выкупим его.</span></label>
+      <label class="lane"><input type="radio" name="need" value="trade"><span class="bg"></span><span class="car" aria-hidden="true">🚗</span><span class="t">Обменять на другую (trade-in)</span><span class="d">Сдайте старый автомобиль и выберите другой.</span></label>
+      <label class="lane"><input type="radio" name="need" value="buy"><span class="bg"></span><span class="car" aria-hidden="true">🚗</span><span class="t">Купить машину</span><span class="d">Подберём автомобиль под ваши задачи.</span></label>
+      <label class="lane"><input type="radio" name="need" value="credit"><span class="bg"></span><span class="car" aria-hidden="true">🚗</span><span class="t">Взять кредит на авто</span><span class="d">Расскажем об условиях выгодного кредитования.</span></label>
+    </fieldset>
+
+    <div class="compose">
+      <div class="field">
+        <label for="car">Марка и год машины (необязательно)</label>
+        <input id="car" type="text" placeholder="Например, Toyota Camry, 2015" autocomplete="off">
+      </div>
+      <div class="out">
+        <div class="bubble" id="bubble" aria-live="polite"></div>
+        <a class="send" id="send" href="#" target="_blank" rel="noopener">Отправить в WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacts" class="wrap">
+    <h2>Как нас найти</h2>
+    <p class="hint">Приезжайте в салон или свяжитесь любым удобным способом.</p>
+    <div class="sign">
+      <p class="town">Тараз</p>
+      <p class="addr">ул. Аль-Фараби 1А</p>
+      <p class="row">Работаем с 09:00 до 19:00</p>
+      <p class="row"><a href="tel:+77773090017">+7 777 309 0017</a></p>
+      <div class="links">
+        <a href="tel:+77773090017">Позвонить</a>
+        <a href="https://wa.me/77773090017" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=%D0%A2%D0%B0%D1%80%D0%B0%D0%B7+%D0%90%D0%BB%D1%8C-%D0%A4%D0%B0%D1%80%D0%B0%D0%B1%D0%B8+1%D0%90" target="_blank" rel="noopener">Открыть карту</a>
+        <a href="https://www.instagram.com/expert_avto_taraz/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Эксперт Авто, Тараз</span>
+    <a href="https://www.instagram.com/expert_avto_taraz/" target="_blank" rel="noopener">@expert_avto_taraz</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var KK={
+    "Продайте, обменяйте или купите машину в Таразе":"Тараздан көлік сатыңыз, айырбастаңыз немесе сатып алыңыз",
+    "Выкуп, trade-in, продажа и выгодное кредитование на Аль-Фараби. Выберите, что нужно, и напишите нам в WhatsApp.":"Көлігіңізді сатып алу, trade-in, көлік сату және тиімді несиелеу — Әл-Фараби көшесінде. Не қажет екенін таңдап, бізге WhatsApp-қа жазыңыз.",
+    "Выбрать, что нужно":"Не қажет екенін таңдау",
+    "Позвонить":"Қоңырау шалу",
+    "Что вам нужно?":"Сізге не қажет?",
+    "Выберите услугу, и мы подготовим сообщение для WhatsApp.":"Қызметті таңдаңыз, біз WhatsApp үшін хабарлама дайындаймыз.",
+    "Выберите услугу":"Қызметті таңдаңыз",
+    "Продать мою машину":"Көлігімді сату",
+    "Оценим автомобиль и выкупим его.":"Көлігіңізді бағалап, сатып аламыз.",
+    "Обменять на другую (trade-in)":"Басқа көлікке айырбастау (trade-in)",
+    "Сдайте старый автомобиль и выберите другой.":"Ескі көлігіңізді тапсырып, басқасын таңдаңыз.",
+    "Купить машину":"Көлік сатып алу",
+    "Подберём автомобиль под ваши задачи.":"Мақсатыңызға сай көлік таңдап береміз.",
+    "Взять кредит на авто":"Көлікке несие алу",
+    "Расскажем об условиях выгодного кредитования.":"Тиімді несиелеу шарттары туралы айтып береміз.",
+    "Марка и год машины (необязательно)":"Көліктің маркасы мен жылы (міндетті емес)",
+    "Отправить в WhatsApp":"WhatsApp-қа жіберу",
+    "Как нас найти":"Бізді қалай табуға болады",
+    "Приезжайте в салон или свяжитесь любым удобным способом.":"Салонға келіңіз немесе өзіңізге ыңғайлы тәсілмен хабарласыңыз.",
+    "ул. Аль-Фараби 1А":"Әл-Фараби көшесі, 1А",
+    "Работаем с 09:00 до 19:00":"Жұмыс уақыты: 09:00-ден 19:00-ге дейін",
+    "Открыть карту":"Картада ашу",
+    "Эксперт Авто, Тараз":"Эксперт Авто, Тараз қаласы",
+    "© Эксперт Авто, Тараз":"© Эксперт Авто, Тараз қаласы"
+  };
+  var MS={
+    ru:{sell:"Здравствуйте! Хочу продать свой автомобиль.",trade:"Здравствуйте! Хочу обменять свой автомобиль по trade-in.",buy:"Здравствуйте! Хочу купить автомобиль.",credit:"Здравствуйте! Хочу узнать про кредит на автомобиль."},
+    kk:{sell:"Сәлеметсіз бе! Көлігімді сатқым келеді.",trade:"Сәлеметсіз бе! Көлігімді trade-in бойынша айырбастағым келеді.",buy:"Сәлеметсіз бе! Көлік сатып алғым келеді.",credit:"Сәлеметсіз бе! Көлікке несие туралы білгім келеді."}
+  };
+  var CAR={ru:" Марка и год: ",kk:" Маркасы мен жылы: "};
+  var PH={ru:"Например, Toyota Camry, 2015",kk:"Мысалы, Toyota Camry, 2015"};
+  var TITLE={ru:document.title,kk:"Эксперт Авто Тараз: көлік сату, trade-in, несие"};
+  var DESC={ru:document.querySelector('meta[name="description"]').content,
+            kk:"Тараздағы Эксперт Авто: көлікті сатып алу, trade-in, көлік сату және тиімді несиелеу. Әл-Фараби көшесі, 1А, 09:00-ден 19:00-ге дейін."};
+  var lang="ru", nodes=[];
+  var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null), n;
+  while((n=w.nextNode())){
+    var t=n.nodeValue.trim();
+    if(KK[t]){ nodes.push({n:n,ru:n.nodeValue,kk:n.nodeValue.replace(t,KK[t])}); }
+  }
+  var car=document.getElementById("car"),
+      bubble=document.getElementById("bubble"),
+      send=document.getElementById("send"),
+      radios=document.querySelectorAll('input[name="need"]'),
+      btns=document.querySelectorAll(".lang button");
+  function update(animate){
+    var need=document.querySelector('input[name="need"]:checked').value;
+    var m=MS[lang][need], c=car.value.trim();
+    if(c){ m+=CAR[lang]+c+"."; }
+    bubble.textContent=m;
+    send.href="https://wa.me/77773090017?text="+encodeURIComponent(m);
+    if(animate){ bubble.classList.remove("pop"); void bubble.offsetWidth; bubble.classList.add("pop"); }
+  }
+  function setLang(l,save){
+    lang=l;
+    nodes.forEach(function(o){ o.n.nodeValue=o[l]; });
+    document.documentElement.lang=l;
+    document.title=TITLE[l];
+    document.querySelector('meta[name="description"]').content=DESC[l];
+    car.placeholder=PH[l];
+    btns.forEach(function(b){ b.setAttribute("aria-pressed",b.getAttribute("data-lang")===l?"true":"false"); });
+    update(false);
+    if(save){ try{ localStorage.setItem("lang",l); }catch(e){} }
+  }
+  radios.forEach(function(r){ r.addEventListener("change",function(){ update(true); }); });
+  car.addEventListener("input",function(){ update(false); });
+  btns.forEach(function(b){ b.addEventListener("click",function(){ setLang(b.getAttribute("data-lang"),true); }); });
+  var saved=null;
+  try{ saved=localStorage.getItem("lang"); }catch(e){}
+  if(saved!=="kk"&&saved!=="ru"){ saved=((navigator.language||"").toLowerCase().indexOf("kk")===0)?"kk":"ru"; }
+  setLang(saved,false);
+})();
+</script>
+</body>
+</html>
